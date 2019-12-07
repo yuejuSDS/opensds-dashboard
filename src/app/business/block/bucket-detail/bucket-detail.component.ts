@@ -227,8 +227,12 @@ export class BucketDetailComponent implements OnInit {
           let str = res._body;
           let x2js = new X2JS();
           let jsonObj = x2js.xml_str2json(str);
+<<<<<<< HEAD
           let alldir = jsonObj.ListBucketResult && jsonObj.ListBucketResult.Contents ? jsonObj.ListBucketResult.Contents :[] ;
           console.log(alldir)
+=======
+          let alldir = jsonObj.ListBucketResult ? jsonObj.ListBucketResult :[] ;
+>>>>>>> 808fe5db95a6fee3d166df8827b4276cd664a617
           if(Object.prototype.toString.call(alldir) === "[object Array]"){
               this.allDir = alldir;
           }else if(Object.prototype.toString.call(alldir) === "[object Object]"){
@@ -244,17 +248,30 @@ export class BucketDetailComponent implements OnInit {
             }
             this.allDir = this.allDir.filter(arr=>{
               let folderContain = false;
+<<<<<<< HEAD
               if(arr.Key.substring(0,this.folderId.length) == this.folderId && arr.Key.length > this.folderId.length){
                 // The number of occurrences of ":" in the folder
                 let folderNum = (this.folderId.split(this.colon)).length-1;
                 let KeyNum = (arr.Key.split(this.colon)).length-1;
                 if(folderNum == KeyNum){
+=======
+              if(arr.Contents.Key.substring(0,this.folderId.length) == this.folderId && arr.Contents.Key.length > this.folderId.length){
+                // The number of occurrences of ":" in the folder
+                let folderNum = (this.folderId.split(this.colon)).length-1;
+                let ObjectKeyNum = (arr.Contents.Key.split(this.colon)).length-1;
+                if(folderNum == ObjectKeyNum){
+>>>>>>> 808fe5db95a6fee3d166df8827b4276cd664a617
                   //Identify the file in the folder
                   folderContain = true;
                 }else if(KeyNum == folderNum + 1){
                   //Identify folders within folders
+<<<<<<< HEAD
                   let lastNum = arr.Key.lastIndexOf(this.colon);
                   if(lastNum == arr.Key.length -1){
+=======
+                  let lastNum = arr.Contents.Key.lastIndexOf(this.colon);
+                  if(lastNum == arr.Contents.Key.length -1){
+>>>>>>> 808fe5db95a6fee3d166df8827b4276cd664a617
                     folderContain = true;
                   }
                 }
@@ -268,6 +285,7 @@ export class BucketDetailComponent implements OnInit {
             //Distinguish between folders and files at the first level
             this.allDir = this.allDir.filter(item=>{
               let folderIndex = false;
+<<<<<<< HEAD
               if(item.Key.indexOf(this.colon) !=-1){
                 let index;
                 index = item.Key.indexOf(this.colon,index);
@@ -277,38 +295,74 @@ export class BucketDetailComponent implements OnInit {
                 }
               }
               return item.Key.indexOf(this.colon) ==-1 || folderIndex;
+=======
+              if(item.Contents.Key.indexOf(this.colon) !=-1){
+                let index;
+                index = item.Contents.Key.indexOf(this.colon,index);
+                //Distinguish between folders and files in folders
+                if(index == item.Contents.Key.length-1){
+                  folderIndex = true;
+                }
+              }
+              return item.Contents.Key.indexOf(this.colon) ==-1 || folderIndex;
+>>>>>>> 808fe5db95a6fee3d166df8827b4276cd664a617
             })
           }
           let folderArray = [];
           this.allFolderNameForCheck = [];
           this.allDir.forEach(item=>{
+<<<<<<< HEAD
             item.size = Utils.getDisplayCapacity(item.Size,2,'KB');
             item.lastModified = Utils.formatDate(item.LastModified);
             item.Tier = item.Key.indexOf(this.colon) == -1 ? "Tier_" + item.Tier + " (" + item.StorageClass + ")" : '--';
             if(item.Key.indexOf(this.colon) !=-1){
               item.objectName = item.Key.slice(0,item.Key.lastIndexOf(this.colon));
+=======
+            item.size = Utils.getDisplayCapacity(item.Contents.Size,2,'KB');
+            item.lastModified = Utils.formatDate(item.Contents.LastModified *1000);
+            item.Location = item.Contents.Location;
+            item.Tier = "Tier_" + item.Contents.Tier + " (" + item.Contents.StorageClass + ")";
+            if(item.Contents.Key.indexOf(this.colon) !=-1){
+              item.objectName = item.Contents.Key.slice(0,item.Contents.Key.lastIndexOf(this.colon));
+>>>>>>> 808fe5db95a6fee3d166df8827b4276cd664a617
               this.allFolderNameForCheck.push(item.objectName);
               item.newFolder = true;
               item.disabled = false;
               item.size = "--";
               backupAllDir.forEach(arr=>{
                 if(this.folderId !=""){
+<<<<<<< HEAD
                   let hasFolder = arr.Key.indexOf(this.folderId) !=-1 && arr.Key != this.folderId;
                   if( hasFolder){
                     let newArrKey = arr.Key.slice(this.folderId.length);
                     if(newArrKey.slice(0,item.Key.length) == item.Key && newArrKey != item.Key){
+=======
+                  let hasFolder = arr.Contents.Key.indexOf(this.folderId) !=-1 && arr.Contents.Key != this.folderId;
+                  if( hasFolder){
+                    let newArrKey = arr.Contents.Key.slice(this.folderId.length);
+                    if(newArrKey.slice(0,item.Contents.Key.length) == item.Contents.Key && newArrKey != item.Contents.Key){
+>>>>>>> 808fe5db95a6fee3d166df8827b4276cd664a617
                       item.disabled = true
                     }
                   }
                 }else{
+<<<<<<< HEAD
                   let hasFile = arr.Key.indexOf(item.Key) !=-1 && arr.Key != item.Key;
                   if(hasFile && arr.Key.slice(0,item.Key.length) == item.Key){
+=======
+                  let hasFile = arr.Contents.Key.indexOf(item.Contents.Key) !=-1 && arr.Contents.Key != item.Contents.Key;
+                  if(hasFile && arr.Contents.Key.slice(0,item.Contents.Key.length) == item.Contents.Key){
+>>>>>>> 808fe5db95a6fee3d166df8827b4276cd664a617
                     item.disabled = true
                   }
                 }
               })
             }else{
+<<<<<<< HEAD
               item.objectName = item.Key;
+=======
+              item.objectName = item.Contents.Key;
+>>>>>>> 808fe5db95a6fee3d166df8827b4276cd664a617
               item.newFolder = false;
               item.disabled = false;
             }
@@ -323,11 +377,19 @@ export class BucketDetailComponent implements OnInit {
   resolveObject(){
     let set = new Set();
     this.allDir.forEach((item,index)=>{
+<<<<<<< HEAD
       let includeIndex = item.Key.indexOf(this.colon);
       if(includeIndex != -1 && includeIndex < item.Key.length-1){
         while(includeIndex > -1){
           set.add(item.Key.substr(0,includeIndex+1));
           includeIndex = item.Key.indexOf(this.colon, includeIndex+1);
+=======
+      let includeIndex = item.Contents.Key.indexOf(this.colon);
+      if(includeIndex != -1 && includeIndex < item.Contents.Key.length-1){
+        while(includeIndex > -1){
+          set.add(item.Contents.Key.substr(0,includeIndex+1));
+          includeIndex = item.Contents.Key.indexOf(this.colon, includeIndex+1);
+>>>>>>> 808fe5db95a6fee3d166df8827b4276cd664a617
         }
       }
     })
