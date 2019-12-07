@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BucketDetailComponent } from './bucket-detail.component';
 import { LifeCycleModule } from './lifeCycle/lifeCycle.module';
+import { AclModule } from './acl/acl.module';
 import { TabViewModule,ButtonModule, DataTableModule, DropMenuModule, DialogModule, FormModule, InputTextModule, InputTextareaModule, 
   ConfirmDialogModule ,ConfirmationService,CheckboxModule,DropdownModule, SplitButtonModule} from './../../../components/common/api';
 import { HttpService } from './../../../shared/service/Http.service';
@@ -33,6 +34,7 @@ let routers = [{
     DropdownModule,
     LifeCycleModule,
     HttpClientModule,
+    AclModule,
     SplitButtonModule
   ],
   declarations: [

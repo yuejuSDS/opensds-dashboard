@@ -1,14 +1,17 @@
 {
     "/v1beta": {
-        "target": "http://139.159.150.240:50040",
-        "secure": false
+        "target": "http://182.138.104.147:13158",
+        "secure": false,
+        "logLevel" : "debug"
     },
     "/v1": {
-        "target": "http://139.159.150.240:8089",
-        "secure": false
+        "target": "http://182.138.104.147:13158",
+        "secure": false,
+        "logLevel" : "debug"
     },
     "/v3": {
-        "target": "http://139.159.150.240/identity",
-        "secure": false
+        "target": "http://182.138.104.147:13158",
+        "secure": false,
+        "logLevel" : "debug"
     }
 }
