@@ -150,7 +150,7 @@ export class BucketDetailComponent implements OnInit {
       let sourceBucket = item.source;
       window['getAkSkList'](() => {
         let requestMethod = "PUT";
-        let url = this.BucketService.url + "/" + this.bucketId + '/' + key;
+        let url = this.bucketId + '/' + key;
         window['canonicalString'](requestMethod, url, () => {
           let options: any = {};
           this.getSignature(options);
@@ -218,7 +218,7 @@ export class BucketDetailComponent implements OnInit {
     this.selectedDir = [];
     window['getAkSkList'](()=>{
       let requestMethod = "GET";
-      let url = this.BucketService.url + '/' + this.bucketId;
+      let url = this.bucketId;
       window['canonicalString'](requestMethod, url,()=>{
         let options: any = {};
         this.getSignature(options);
@@ -451,7 +451,7 @@ export class BucketDetailComponent implements OnInit {
     }else{
       fileObjectKey = file.Key;
     }
-    let downloadUrl = `${this.BucketService.url}/${this.bucketId}/${fileObjectKey}`;
+    let downloadUrl = `${this.bucketId}/${fileObjectKey}`;
     window['getAkSkList'](()=>{
       let requestMethod = "GET";
       let url = downloadUrl;
@@ -529,7 +529,7 @@ export class BucketDetailComponent implements OnInit {
     }
     window['getAkSkList'](()=>{
       let requestMethod = "PUT";
-      let url = this.BucketService.url + "/" + this.bucketId+ '/' +folderName;
+      let url = this.bucketId+ '/' +folderName;
       window['canonicalString'](requestMethod, url,()=>{
         let options: any = {};
         this.getSignature(options);
@@ -579,7 +579,7 @@ export class BucketDetailComponent implements OnInit {
                     }
                     window['getAkSkList'](()=>{
                       let requestMethod = "DELETE";
-                      let url = this.BucketService.url + `/${this.bucketId}/${objectKey}`;
+                      let url = `${this.bucketId}/${objectKey}`;
                       window['canonicalString'](requestMethod, url,()=>{
                         let options: any = {};
                         this.getSignature(options);
@@ -599,7 +599,7 @@ export class BucketDetailComponent implements OnInit {
                       }
                       window['getAkSkList'](()=>{
                         let requestMethod = "DELETE";
-                        let url = this.BucketService.url + `/${this.bucketId}/${objectKey}`;
+                        let url = `${this.bucketId}/${objectKey}`;
                         window['canonicalString'](requestMethod, url,()=>{
                           let options: any = {};
                           this.getSignature(options);

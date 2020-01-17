@@ -10,7 +10,7 @@ export class BucketService {
     private paramStor: ParamStorService
   ) { }
 
-  url = 'v1/s3';
+  url = 's3';
 
   //Create bucket
   createBucket(name,param?,options?) {

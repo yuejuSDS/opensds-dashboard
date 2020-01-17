@@ -181,7 +181,7 @@ export class LifeCycleComponent implements OnInit {
         this.modifyArr = [];
         window['getAkSkList'](() => {
             let requestMethod = "GET";
-            let url = this.BucketService.url + '/' + this.bucketId + "/?lifecycle";
+            let url = this.bucketId + "/?lifecycle";
             window['canonicalString'](requestMethod, url, () => {
                 let options: any = {};
                 this.getSignature(options);
@@ -327,7 +327,7 @@ export class LifeCycleComponent implements OnInit {
     getBackets(event, transIndex) {
         window['getAkSkList'](() => {
             let requestMethod = "GET";
-            let url = this.BucketService.url;
+            let url = "";
             window['canonicalString'](requestMethod, url, () => {
                 let options: any = {};
                 this.getSignature(options);
@@ -360,7 +360,7 @@ export class LifeCycleComponent implements OnInit {
         let storageClasses = "storageClasses";
         window['getAkSkList'](() => {
             let requestMethod = "GET";
-            let url = this.BucketService.url + '/' + storageClasses;
+            let url = storageClasses;
             window['canonicalString'](requestMethod, url, () => {
                 let options: any = {};
                 this.getSignature(options);
@@ -825,7 +825,7 @@ export class LifeCycleComponent implements OnInit {
     createLifeCycleSubmit(param) {
         window['getAkSkList'](() => {
             let requestMethod = "PUT";
-            let url = this.BucketService.url + '/' + this.bucketId + "/?lifecycle";
+            let url = this.bucketId + "/?lifecycle";
             window['canonicalString'](requestMethod, url, () => {
                 let options: any = {};
                 this.getSignature(options);
@@ -933,7 +933,7 @@ export class LifeCycleComponent implements OnInit {
         //Multiple means batch deletion
         window['getAkSkList'](() => {
             let requestMethod = "DELETE";
-            let url = this.BucketService.url + '/' + this.bucketId + "/?lifecycle" + "&ruleID=" + value.ObjectKey;
+            let url = this.bucketId + "/?lifecycle" + "&ruleID=" + value.ObjectKey;
             window['canonicalString'](requestMethod, url, () => {
                 let options: any = {};
                 this.getSignature(options);

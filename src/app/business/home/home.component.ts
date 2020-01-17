@@ -217,7 +217,7 @@ export class HomeComponent implements OnInit {
     initBucket2backendAnd2Type(){
         window['getAkSkList'](()=>{
             let requestMethod = "GET";
-            let url = this.BucketService.url;
+            let url = "";
             window['canonicalString'](requestMethod, url, ()=>{
                 let options: any = {};
                 this.getSignature(options);

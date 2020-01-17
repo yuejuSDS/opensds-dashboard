@@ -195,7 +195,7 @@ export class BucketsComponent implements OnInit{
         this.allBucketNameForCheck = [];
         window['getAkSkList'](()=>{
             let requestMethod = "GET";
-            let url = this.BucketService.url;
+            let url = "";
             window['canonicalString'](requestMethod, url,()=>{
                 let options: any = {};
                 this.getSignature(options);
@@ -242,7 +242,7 @@ export class BucketsComponent implements OnInit{
     initBucket2backendAnd2Type(){
         window['getAkSkList'](()=>{
             let requestMethod = "GET";
-            let url = this.BucketService.url;
+            let url = "";
             window['canonicalString'](requestMethod, url,()=>{
                 let options: any = {};
                 this.getSignature(options);
@@ -381,7 +381,7 @@ export class BucketsComponent implements OnInit{
                     </CreateBucketConfiguration>`
         window['getAkSkList'](()=>{
             let requestMethod = "PUT";
-            let url = this.BucketService.url+"/"+this.createBucketForm.value.name;
+            let url = this.createBucketForm.value.name;
             window['canonicalString'](requestMethod, url,()=>{
                 let options: any = {};
                 this.getSignature(options);
@@ -437,7 +437,7 @@ export class BucketsComponent implements OnInit{
     </SSEConfiguration>`;
         window['getAkSkList'](()=>{
             let requestMethod = "PUT";
-            let url = this.BucketService.url+"/"+this.createBucketForm.value.name + "/?DefaultEncryption";
+            let url = this.createBucketForm.value.name + "/?DefaultEncryption";
             window['canonicalString'](requestMethod, url,()=>{
                 let options: any = {};
                 this.getSignature(options);
@@ -467,7 +467,7 @@ export class BucketsComponent implements OnInit{
       </VersioningConfiguration>`
         window['getAkSkList'](()=>{
             let requestMethod = "PUT";
-            let url = this.BucketService.url+"/"+bucketName + "/?versioning";
+            let url = bucketName + "/?versioning";
             window['canonicalString'](requestMethod, url,()=>{
                 let options: any = {};
                 this.getSignature(options);
@@ -503,7 +503,7 @@ export class BucketsComponent implements OnInit{
                                     </VersioningConfiguration>`
         window['getAkSkList'](()=>{
             let requestMethod = "PUT";
-            let url = this.BucketService.url+"/"+bucketName + "/?versioning";
+            let url = bucketName + "/?versioning";
             window['canonicalString'](requestMethod, url,()=>{
                 let options: any = {};
                 this.getSignature(options);
@@ -540,7 +540,7 @@ export class BucketsComponent implements OnInit{
     deleteBucket(bucket){
         window['getAkSkList'](()=>{
             let requestMethod = "GET";
-            let url = this.BucketService.url + '/' + bucket.name;
+            let url = bucket.name;
             window['canonicalString'](requestMethod, url,()=>{
                 let options: any = {};
                 this.getSignature(options);
@@ -602,7 +602,7 @@ export class BucketsComponent implements OnInit{
                                         }
                                         window['getAkSkList'](()=>{
                                             let requestMethod = "DELETE";
-                                            let url = this.BucketService.url + '/' + name;
+                                            let url =  name;
                                             window['canonicalString'](requestMethod, url,()=>{
                                                 let options: any = {};
                                                 this.getSignature(options);
